@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://wt3uwpwrrcav"]
+
+[ext_resource type="Script" uid="uid://ctlmyn3mwg1rn" path="res://scripts/inventory.gd" id="1_kh8if"]
+[ext_resource type="PackedScene" uid="uid://p4ed1us41g4g" path="res://scenes/Slot.tscn" id="2_elp5n"]
+[ext_resource type="Texture2D" uid="uid://cnmdrmc6m2sms" path="res://assets/sprite02;.png" id="3_brmsw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7f7tj"]
+atlas = ExtResource("3_brmsw")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5d712"]
+texture = SubResource("AtlasTexture_7f7tj")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brmsw"]
+atlas = ExtResource("3_brmsw")
+region = Rect2(17, 1, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_njucy"]
+texture = SubResource("AtlasTexture_brmsw")
+
+[sub_resource type="Theme" id="Theme_elp5n"]
+Button/styles/focus = SubResource("StyleBoxTexture_5d712")
+Button/styles/normal = SubResource("StyleBoxTexture_njucy")
+
+[node name="Inventory" type="CanvasLayer" unique_id=1117694417 node_paths=PackedStringArray("grid")]
+script = ExtResource("1_kh8if")
+grid = NodePath("MarginContainer/GridContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1635845950]
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.21026745, 0.20418003)
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=405443206]
+layout_mode = 2
+theme = SubResource("Theme_elp5n")
+columns = 4
+
+[node name="Button" parent="MarginContainer/GridContainer" unique_id=874655083 instance=ExtResource("2_elp5n")]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_constants/h_separation = 10
+expand_icon = true

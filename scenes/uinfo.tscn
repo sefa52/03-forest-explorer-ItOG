@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://cyo1y2bjt1oai"]
+
+[ext_resource type="FontFile" uid="uid://lsgihh8w4j00" path="res://assets/ComicoroRu_0.ttf" id="1_by2hn"]
+[ext_resource type="Texture2D" uid="uid://cnmdrmc6m2sms" path="res://assets/sprite02;.png" id="2_1r025"]
+[ext_resource type="Script" uid="uid://cxskuc7pq27ef" path="res://scripts/uinfo.gd" id="3_s1jkk"]
+[ext_resource type="PackedScene" uid="uid://dvfs3f7gj347b" path="res://scenes/forest.tscn" id="4_lt38p"]
+[ext_resource type="Script" uid="uid://wbgwlcaev5w2" path="res://scripts/next_button.gd" id="5_by2hn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02fdx"]
+atlas = ExtResource("2_1r025")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xica7"]
+texture = SubResource("AtlasTexture_02fdx")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgqw2"]
+atlas = ExtResource("2_1r025")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_02fdx"]
+texture = SubResource("AtlasTexture_vgqw2")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Theme" id="Theme_xica7"]
+Button/fonts/font = ExtResource("1_by2hn")
+Button/styles/normal = SubResource("StyleBoxTexture_xica7")
+TextEdit/styles/normal = SubResource("StyleBoxTexture_02fdx")
+
+[node name="Uinfo" type="Control" unique_id=1559153500 node_paths=PackedStringArray("Name")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_xica7")
+script = ExtResource("3_s1jkk")
+Name = NodePath("VBoxContainer/Name/NameTextEdit")
+NextScene = ExtResource("4_lt38p")
+
+[node name="background" type="ColorRect" parent="." unique_id=1003129003]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0467934, 1.634039e-05, 0.21602437, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=366457235]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.5
+offset_top = -7.5
+offset_right = 18.5
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Name" type="HBoxContainer" parent="VBoxContainer" unique_id=1485848408]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Name" unique_id=276718215]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_by2hn")
+text = "Name:"
+
+[node name="NameTextEdit" type="TextEdit" parent="VBoxContainer/Name" unique_id=75489598]
+custom_minimum_size = Vector2(50, 5)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_by2hn")
+text_direction = 3
+
+[node name="NextButton" type="Button" parent="VBoxContainer" unique_id=42371459]
+layout_mode = 2
+text = "Next"
+script = ExtResource("5_by2hn")
+
+[connection signal="pressed" from="VBoxContainer/NextButton" to="." method="_on_next_button_pressed"]

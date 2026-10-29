@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://q0be6fcia2d3"]
+
+[ext_resource type="Script" uid="uid://d3wo3ef1mpn7f" path="res://scripts/item.gd" id="1_g5jiy"]
+[ext_resource type="Texture2D" uid="uid://bjkgofdngid6e" path="res://assets/sprite.png" id="2_gjkia"]
+[ext_resource type="Resource" uid="uid://1b6xjm3bhi2x" path="res://resources/mushroom.tres" id="2_y81ac"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48j6w"]
+atlas = ExtResource("2_gjkia")
+region = Rect2(3, 19, 10, 9)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xica7"]
+radius = 8.246211
+
+[node name="mushrooms" type="Node2D" unique_id=1075294605 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_g5jiy")
+item_resources = ExtResource("2_y81ac")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1324941820]
+texture = SubResource("AtlasTexture_48j6w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=20730797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=204064873]
+scale = Vector2(0.33701473, 0.33701473)
+shape = SubResource("CircleShape2D_xica7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

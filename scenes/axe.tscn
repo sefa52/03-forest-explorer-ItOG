@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cx0rbijp6ipwl"]
+
+[ext_resource type="Script" uid="uid://d3wo3ef1mpn7f" path="res://scripts/item.gd" id="1_p8nqp"]
+[ext_resource type="Resource" uid="uid://dr462jhouctq8" path="res://resources/axe.tres" id="2_waypk"]
+[ext_resource type="Texture2D" uid="uid://dpdicl3nyiifq" path="res://assets/sprite_2.png" id="3_wwsyn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwsyn"]
+atlas = ExtResource("3_wwsyn")
+region = Rect2(0, 0, 16, 17)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xica7"]
+radius = 8.246211
+
+[node name="axe" type="Node2D" unique_id=1075294605 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_p8nqp")
+item_resources = ExtResource("2_waypk")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1324941820]
+texture = SubResource("AtlasTexture_wwsyn")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=20730797]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=204064873]
+scale = Vector2(0.34891894, 0.34891894)
+shape = SubResource("CircleShape2D_xica7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

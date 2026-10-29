@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dxpk2b6loa11b"]
+
+[ext_resource type="Script" uid="uid://c0vcnkni0bq4b" path="res://scripts/tree.gd" id="1_vplca"]
+[ext_resource type="Resource" uid="uid://bymmqyvnsqpv0" path="res://resources/wood.tres" id="2_qd6xs"]
+[ext_resource type="Texture2D" uid="uid://bjkgofdngid6e" path="res://assets/sprite.png" id="2_viusy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xica7"]
+atlas = ExtResource("2_viusy")
+region = Rect2(32, 0, 7, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l4hx"]
+size = Vector2(10.8071, 16.732544)
+
+[node name="Tree" type="Node2D" unique_id=2121454841]
+script = ExtResource("1_vplca")
+item_resources = ExtResource("2_qd6xs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=271157169]
+texture = SubResource("AtlasTexture_xica7")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1760272028]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1478052839]
+position = Vector2(-2.9802322e-08, -0.096583486)
+scale = Vector2(0.37012702, 0.37012702)
+shape = SubResource("RectangleShape2D_1l4hx")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

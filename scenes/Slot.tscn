@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://p4ed1us41g4g"]
+
+[ext_resource type="Script" uid="uid://b1nduhhu4qav3" path="res://scripts/button.gd" id="1_mlwvr"]
+[ext_resource type="Texture2D" uid="uid://cnmdrmc6m2sms" path="res://assets/sprite02;.png" id="2_la8rk"]
+
+[sub_resource type="Theme" id="Theme_js1s2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_brmsw"]
+atlas = ExtResource("2_la8rk")
+region = Rect2(17, 1, 14, 14)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t6x3v"]
+texture = SubResource("AtlasTexture_brmsw")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uqmy"]
+atlas = ExtResource("2_la8rk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2q7qa"]
+texture = SubResource("AtlasTexture_7uqmy")
+
+[node name="Button" type="Button" unique_id=874655083]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = SubResource("Theme_js1s2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_t6x3v")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2q7qa")
+script = ExtResource("1_mlwvr")
